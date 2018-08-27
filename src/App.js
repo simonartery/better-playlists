@@ -5,12 +5,29 @@ import './App.css';
 let defaultStyle = {
   color: '#FFD333'
 };
+let fakeServerData = {
+  user: {
+    name: 'Siimon'
+    playlists: [
+      {
+        name: 'My favorites'
+        songs: ['Song1', 'Sang2']
+      },
+      {
+        name: 'd'
+        songs: ['tries', 'obvious']
+      },
+      {},
+      {},
+    ]
+  }
+}
 
 class Aggregate extends Component {
   render () {
     return (
       <div style={{...defaultStyle, width: "40%", display: 'inline-block'}}>
-        <h2 style={{defaultStyle}}>Number Text</h2>
+        <h2>{this.props.playlists && this.props.playlists.length} Text</h2>
       </div>
     );
   }
@@ -40,11 +57,22 @@ class Playlist extends Component {
 }
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {serverData: {}}
+  }
+  componentDidMount () {
+    this.setState({serverData: fakeServerData});
+  }
   render() {
     return (
       <div className="App">
-        <h1 style={{...defaultStyle, 'font-size': '54px'}}>Title</h1>
-        <Aggregate/>
+        <h1 style={{...defaultStyle, 'font-size': '54px'}}>
+          {this.state.serverData.user && 
+           this.state.serverData.user.name}'s Playlists
+        </h1>
+        <Aggregate playlists={this.state.serverData.user && 
+                              this.state.serverData.user.name}/>
         <Aggregate/>
         <Filter/>
         <Playlist/>
