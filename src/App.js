@@ -7,14 +7,14 @@ let defaultStyle = {
 };
 let fakeServerData = {
   user: {
-    name: 'Siimon'
+    name: 'Siimon',
     playlists: [
       {
-        name: 'My favorites'
+        name: 'My favorites',
         songs: ['Song1', 'Sang2']
       },
       {
-        name: 'd'
+        name: 'd',
         songs: ['tries', 'obvious']
       },
       {},
